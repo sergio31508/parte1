@@ -1,26 +1,19 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.jsx";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.jsx';
 
-const root = createRoot(document.getElementById("root"));
+// Importa el service worker desde src
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('✅ Service Worker registrado:', reg.scope))
+      .catch(err => console.error('❌ Error registrando Service Worker:', err));
+  });
+}
 
-root.render(
+createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
   </StrictMode>
 );
-
-// Registrar Service Worker
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("/sw.js")
-      .then((registration) => {
-        console.log("✅ Service Worker registrado con éxito:", registration.scope);
-      })
-      .catch((error) => {
-        console.error("❌ Error al registrar el Service Worker:", error);
-      });
-  });
-}

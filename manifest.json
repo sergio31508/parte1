@@ -1,0 +1,17 @@
+{
+  "name": "fron",
+  "short_name": "pwa",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "description": "hola",
+  "icons": [
+    {
+      "src": "/src/assets/react.svg",
+      "sizes": "48x48",
+      "type": "image/svg+xml"
+    }
+  ]
+}
